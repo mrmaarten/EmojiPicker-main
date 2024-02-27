@@ -1,7 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import emojiData from 'emoji-datasource';
-    import emojiUnicode from 'emoji-unicode';
     import { focusedEmojiIndex } from '../stores.js';
 
     $: console.log(categorizedEmojis);

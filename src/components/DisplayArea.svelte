@@ -56,7 +56,7 @@
     {/each}
     <!-- <button on:click={deleteLastEmoji}>DEL</button> -->
 </div>
-<button class="delete-button" on:click={deleteLastEmoji}>Del</button>
+<button class="delete-button" on:click={deleteLastEmoji}>⌫</button>
 </div>
 
 <style>
@@ -77,7 +77,7 @@
       justify-content: flex-start;
       align-items: center;
       min-height: 100px;
-      font-size: 3em;
+      font-size: 8vw;
       width: 80%;
     }
   
@@ -90,6 +90,10 @@
     }
   
     .delete-button {
-      width: 10%;
+        padding: 0;
+        align-items: center;
+        /* width: 8vw; */
+        font-size: 6vw;
+        background: none;
     }
   </style>

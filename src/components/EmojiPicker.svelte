@@ -7,6 +7,8 @@
     function selectEmoji(emoji) {
       dispatch('select', emoji);
     }
+
+
   </script>
   
   <div class="emoji-grid">

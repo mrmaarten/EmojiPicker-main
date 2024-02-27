@@ -1,22 +1,23 @@
 <script>
   import EmojiPicker from './components/EmojiPicker.svelte';
   import DisplayArea from './components/DisplayArea.svelte';
-
-  let selectedEmojis = [];
+  import { selectedEmojis } from './stores.js';
 
   function handleSelect(event) {
-    if (selectedEmojis.length < 10) {
-      selectedEmojis = [...selectedEmojis, event.detail];
+    // handles selecting a emoji from the grid of emojis
+    if ($selectedEmojis.length < 10) {
+      //add the emoji from the grid to the selected array
+      selectedEmojis.update(emojis => [...emojis, event.detail]);
     }
   }
 
   function deleteEmoji() {
-    selectedEmojis = selectedEmojis.slice(0, -1);
+    selectedEmojis.update(emojis => emojis.slice(0, -1));
   }
-  
+
 </script>
 
 <main>
-  <DisplayArea {selectedEmojis} on:delete={deleteEmoji} />
+  <DisplayArea on:delete={deleteEmoji} />
   <EmojiPicker on:select={handleSelect} />
 </main>

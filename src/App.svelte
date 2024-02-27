@@ -11,10 +11,9 @@
   }
 
   function deleteEmoji() {
-    console.log('deleteEmoji: ', selectedEmojis);
     selectedEmojis = selectedEmojis.slice(0, -1);
-    console.log('after: ', selectedEmojis);
   }
+  
 </script>
 
 <main>

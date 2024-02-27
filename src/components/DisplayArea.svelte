@@ -1,25 +1,25 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { selectedEmojis } from '../stores.js';
+    import { selectedEmojis, focusedEmojiIndex } from '../stores.js';
 
     const dispatch = createEventDispatcher();
 
-    let focusedEmojiIndex = null;
+    // export let focusedEmojiIndex = null;
 
     function handleEmojiClick(index) {
-        focusedEmojiIndex = index;
+        $focusedEmojiIndex.update(index);
     }
 
     function handleKeyDown(event) {
-        if (event.key === 'Backspace' && focusedEmojiIndex !== null) {
-            deleteEmojiAt(focusedEmojiIndex);
+        if (event.key === 'Backspace' && $focusedEmojiIndex !== null) {
+            deleteEmojiAt($focusedEmojiIndex);
             event.preventDefault();
         }
     }
 
     function deleteLastEmoji() {
-        if (focusedEmojiIndex !== null) {
-            deleteEmojiAt(focusedEmojiIndex);
+        if ($focusedEmojiIndex !== null) {
+            deleteEmojiAt($focusedEmojiIndex);
         } else if ($selectedEmojis.length > 0) {
             deleteEmojiAt($selectedEmojis.length - 1);
         }
@@ -30,38 +30,11 @@
             ...emojis.slice(0, index),
             ...emojis.slice(index + 1)
         ]);
-        focusedEmojiIndex = null;
+        $focusedEmojiIndex.update(null);
     }
 
 </script>
 
-<style>
-    .emoji-container {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        height: 100px;
-        font-size: 2em;
-    }
-
-    .emoji-container span {
-        cursor: pointer;
-    }
-
-    .emoji-container span.focused {
-        outline: 1px solid blue;
-    }
-</style>
-
-<div class="emoji-container" contenteditable="true" on:keydown={handleKeyDown}>
-    {#each $selectedEmojis as emoji, i (i)}
-        <span
-            class:focused={i === focusedEmojiIndex}
-            on:click={() => handleEmojiClick(i)}
-        >
-            {emoji}
-        </span>
-        
 <!-- 
         <button
         class:focused={i === focusedEmojiIndex}
@@ -70,6 +43,53 @@
     >
         {emoji}
     </button> -->
+<div class="wrapper">
+<div class="emoji-container" contenteditable="true" on:keydown={handleKeyDown}>
+    {#each $selectedEmojis as emoji, i (i)}
+        <span
+            class:focused={i === $focusedEmojiIndex}
+            on:click={() => handleEmojiClick(i)}
+        >
+            {emoji}
+        </span>
+
     {/each}
+    <!-- <button on:click={deleteLastEmoji}>DEL</button> -->
 </div>
-<button on:click={deleteLastEmoji}>DEL</button>
+<button class="delete-button" on:click={deleteLastEmoji}>Del</button>
+</div>
+
+<style>
+    .wrapper {
+      position: fixed;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%; /* Adjust as needed */
+      margin: 0 auto; /* Center the wrapper */
+      background: rgb(92, 92, 92);
+      border-radius: 12px; /* Add rounded corners */
+    }
+  
+    .emoji-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100px;
+      font-size: 3em;
+      width: 80%;
+    }
+  
+    .emoji-container span {
+      cursor: pointer;
+    }
+  
+    .emoji-container span.focused {
+      outline: 1px solid blue;
+    }
+  
+    .delete-button {
+      width: 10%;
+    }
+  </style>

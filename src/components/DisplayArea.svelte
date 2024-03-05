@@ -84,26 +84,42 @@ TODO
 <style>
     .wrapper {
       position: fixed;
-      top: 0;
+      top: 1rem;
       width: 90%; 
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 0 auto; /* Center the wrapper */
-      background: rgb(92, 92, 92);
+      background: rgba(92, 92, 92, 0.8); /* Use rgba for semi-transparent background */
+        backdrop-filter: blur(10px); 
+        -webkit-backdrop-filter: blur(10px); /* Apply blur effect with -webkit- prefix */
+
       border-radius: 16px; /* Add rounded corners */
+      border: 4px solid yellow;
       padding-left: 10px;
       padding-right: 10px;
       z-index: 2;
-
-
     }
+  
+    .emoji-container::before {
+    content: "";
+    position: absolute;
+    top: -1.5rem; /* Match the top value of the wrapper */
+    left: 0;
+    right: 0;
+    height: 1.3rem; /* Match the top value of the wrapper */
+    background: rgba(34, 34, 34, 0.8);
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(10px); /* Apply blur effect with -webkit- prefix */
+
+    z-index: -1;
+  }
   
     .emoji-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100px;
+      height: 10vw;
       font-size: 7.5vw;
       /* width: 80%; */
     }
@@ -114,7 +130,7 @@ TODO
     }
   
     .emoji-container span.focused {
-      outline: 1px solid blue;
+      outline: 1px dashed yellow;
       touch-action: manipulation; /* remove the delay on touch devices */
     }
   
@@ -123,6 +139,7 @@ TODO
         align-items: center;
         /* width: 8vw; */
         font-size: 6vw;
+        color: yellow;
         background: none;
         touch-action: manipulation; /* remove the delay on touch devices */
 

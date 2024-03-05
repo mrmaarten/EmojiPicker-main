@@ -53,16 +53,12 @@
 
   <style>
      .emoji-picker {
-      /* display: grid;  */
       position: absolute;
-      top: 16%; /* Position it at the bottom of the parent element */
+      top: 16%; 
       z-index: 1;
       justify-content: center;
       align-items: center;
-      /* min-height: 100px;  */
-      /* font-size: 3vw; */
       width: 90%;
-      /* margin-top: 7000px; */
     }
 
     .emoji-picker button{
@@ -75,13 +71,7 @@
     }
     
     .emoji-grid {
-      /* display: flex;  */
-      /* justify-content: center; */
-      /* align-items: center; */
-      /* min-height: 100px;  */
       font-size: 3vw;
-
-      /* width: 10%; */
     }
 
   </style>

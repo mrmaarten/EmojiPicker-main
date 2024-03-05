@@ -12,8 +12,9 @@ TODO
     import { createEventDispatcher } from 'svelte';
     import { selectedEmojis, focusedEmojiIndex } from '../stores.js';
    
-
     const dispatch = createEventDispatcher();
+
+    let hiddenInput;
 
     // export let focusedEmojiIndex = null;
 
@@ -23,6 +24,9 @@ TODO
         // if (index !== null) {
             focusedEmojiIndex.set(index);
         // }
+        
+        // After handling the click, focus the hidden input field
+        hiddenInput.focus();
     }
 
     function handleKeyDown(event) {
@@ -62,7 +66,7 @@ TODO
         {emoji}
     </button> -->
 <div class="wrapper">
-<div class="emoji-container" contenteditable="true" on:keydown={handleKeyDown}>
+<div class="emoji-container" contenteditable="false" on:keydown={handleKeyDown}>
     {#each $selectedEmojis as emoji, i (i)}
         <span
             class:focused={i === $focusedEmojiIndex}
@@ -98,7 +102,7 @@ TODO
       justify-content: center;
       align-items: center;
       min-height: 100px;
-      font-size: 7vw;
+      font-size: 7.5vw;
       /* width: 80%; */
     }
   

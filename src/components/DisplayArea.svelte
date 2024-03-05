@@ -1,4 +1,14 @@
+<!-- 
+TODO 
+- fix bug: when selecting a emoji in the selected field, the emoji can be deleted with the keyboard but not with the del <button 
+- show the last deleted emojis under neath the selected emojis, with a filter for repeating emojis
+- make a selection of emojis
+- reverse the order of the categories
+- test the app on mobile / iPad with HDMI cable
+-->
+
 <script>
+    
     import { createEventDispatcher } from 'svelte';
     import { selectedEmojis, focusedEmojiIndex } from '../stores.js';
 
@@ -7,7 +17,9 @@
     // export let focusedEmojiIndex = null;
 
     function handleEmojiClick(index) {
-        $focusedEmojiIndex.update(index);
+        console.log('$focusedEmojiIndex: ', $focusedEmojiIndex);
+
+        $focusedEmojiIndex.set(index);
     }
 
     function handleKeyDown(event) {
@@ -26,11 +38,13 @@
     }
 
     function deleteEmojiAt(index) {
+        console.log('index: ', index);
         selectedEmojis.update(emojis => [
             ...emojis.slice(0, index),
             ...emojis.slice(index + 1)
         ]);
-        $focusedEmojiIndex.update(null);
+        $focusedEmojiIndex.set(null);
+        console.log('selectedEmojis: ', $selectedEmojis);
     }
 
 </script>
@@ -69,7 +83,10 @@
       width: 90%; /* Adjust as needed */
       margin: 0 auto; /* Center the wrapper */
       background: rgb(92, 92, 92);
-      border-radius: 12px; /* Add rounded corners */
+      border-radius: 16px; /* Add rounded corners */
+      padding-left: 10px;
+      padding-right: 10px;
+
     }
   
     .emoji-container {

@@ -81,7 +81,7 @@ TODO
     .wrapper {
       position: fixed;
       top: 0;
-      width: 80%; 
+      width: 90%; 
       display: flex;
       justify-content: space-between;
       align-items: center;

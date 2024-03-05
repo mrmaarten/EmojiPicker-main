@@ -54,12 +54,24 @@
       /* font-size: 3vw; */
       width: 100%;
     }
+
+    .emoji-picker button{
+      font-size: 4vw;
+      padding: 0;
+      margin: 6px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    
     .emoji-grid {
       /* display: flex;  */
       /* justify-content: center; */
       /* align-items: center; */
       /* min-height: 100px;  */
       font-size: 3vw;
+
       /* width: 10%; */
     }
+
   </style>

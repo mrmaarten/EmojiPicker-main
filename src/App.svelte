@@ -21,3 +21,13 @@
   <DisplayArea on:delete={deleteEmoji} />
   <EmojiPicker on:select={handleSelect} />
 </main>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+</style>

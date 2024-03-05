@@ -94,6 +94,8 @@ TODO
       border-radius: 16px; /* Add rounded corners */
       padding-left: 10px;
       padding-right: 10px;
+      z-index: 2;
+
 
     }
   

@@ -14,8 +14,14 @@
         return categories;
     }, {});
 
+    // Reverse the categories
+    let reversedCategories = Object.keys(categorizedEmojis).reduceRight((obj, key) => {
+      obj[key] = categorizedEmojis[key];
+      return obj;
+    }, {});
+
     const dispatch = createEventDispatcher();
-    const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣'];
+    // const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣'];
   
     function handleEmojiClick(emoji) {
       dispatch('select', emoji);
@@ -35,7 +41,7 @@
   </script>
   
   <div class="emoji-picker">
-    {#each Object.entries(categorizedEmojis) as [category, emojis]}
+    {#each Object.entries(reversedCategories) as [category, emojis]}
       <h2>{category}</h2>
       <div class="emoji-grid">
         {#each emojis as emoji}
@@ -48,11 +54,15 @@
   <style>
      .emoji-picker {
       /* display: grid;  */
+      position: absolute;
+      top: 16%; /* Position it at the bottom of the parent element */
+      z-index: 1;
       justify-content: center;
       align-items: center;
       /* min-height: 100px;  */
       /* font-size: 3vw; */
-      width: 100%;
+      width: 90%;
+      /* margin-top: 7000px; */
     }
 
     .emoji-picker button{

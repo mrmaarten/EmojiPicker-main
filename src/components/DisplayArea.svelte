@@ -102,18 +102,18 @@ TODO
     }
   
     .emoji-container::before {
-    content: "";
-    position: absolute;
-    top: -1.5rem; /* Match the top value of the wrapper */
-    left: 0;
-    right: 0;
-    height: 1.3rem; /* Match the top value of the wrapper */
-    background: rgba(34, 34, 34, 0.8);
-    backdrop-filter: blur(16px); 
-    -webkit-backdrop-filter: blur(10px); /* Apply blur effect with -webkit- prefix */
+        content: "";
+        position: absolute;
+        top: -1.5rem; /* Match the top value of the wrapper */
+        left: 0;
+        right: 0;
+        height: 1.3rem; /* Match the top value of the wrapper */
+        background: rgba(34, 34, 34, 0.8);
+        backdrop-filter: blur(16px); 
+        -webkit-backdrop-filter: blur(10px); /* Apply blur effect with -webkit- prefix */
 
-    z-index: -1;
-  }
+        z-index: -1;
+     }
   
     .emoji-container {
       display: flex;
@@ -130,7 +130,9 @@ TODO
     }
   
     .emoji-container span.focused {
-      outline: 1px dashed yellow;
+      outline: 1px dashed red;
+      /* box-shadow: 1px -1px 1px 1px yellow, 0px 0px 0px 0px yellow; */
+
       touch-action: manipulation; /* remove the delay on touch devices */
     }
   

@@ -8,9 +8,10 @@ TODO
 -->
 
 <script>
-    
+    // import { writable } from 'svelte/store';
     import { createEventDispatcher } from 'svelte';
     import { selectedEmojis, focusedEmojiIndex } from '../stores.js';
+   
 
     const dispatch = createEventDispatcher();
 
@@ -18,18 +19,21 @@ TODO
 
     function handleEmojiClick(index) {
         console.log('$focusedEmojiIndex: ', $focusedEmojiIndex);
-
-        $focusedEmojiIndex.set(index);
+        console.log('index: ', index);
+        // if (index !== null) {
+            focusedEmojiIndex.set(index);
+        // }
     }
 
     function handleKeyDown(event) {
         if (event.key === 'Backspace' && $focusedEmojiIndex !== null) {
-            deleteEmojiAt($focusedEmojiIndex);
+            deleteEmojiAt($focusedEmojiIndex-1);
             event.preventDefault();
         }
     }
 
     function deleteLastEmoji() {
+        console.log('$focusedEmojiIndex: ', $focusedEmojiIndex);
         if ($focusedEmojiIndex !== null) {
             deleteEmojiAt($focusedEmojiIndex);
         } else if ($selectedEmojis.length > 0) {
@@ -43,7 +47,7 @@ TODO
             ...emojis.slice(0, index),
             ...emojis.slice(index + 1)
         ]);
-        $focusedEmojiIndex.set(null);
+        focusedEmojiIndex.set(null);
         console.log('selectedEmojis: ', $selectedEmojis);
     }
 
@@ -77,10 +81,10 @@ TODO
     .wrapper {
       position: fixed;
       top: 0;
+      width: 80%; 
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 90%; /* Adjust as needed */
       margin: 0 auto; /* Center the wrapper */
       background: rgb(92, 92, 92);
       border-radius: 16px; /* Add rounded corners */
@@ -91,19 +95,21 @@ TODO
   
     .emoji-container {
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       min-height: 100px;
-      font-size: 8vw;
-      width: 80%;
+      font-size: 7vw;
+      /* width: 80%; */
     }
   
     .emoji-container span {
       cursor: pointer;
+      touch-action: manipulation; /* remove the delay on touch devices */
     }
   
     .emoji-container span.focused {
       outline: 1px solid blue;
+      touch-action: manipulation; /* remove the delay on touch devices */
     }
   
     .delete-button {
@@ -112,5 +118,7 @@ TODO
         /* width: 8vw; */
         font-size: 6vw;
         background: none;
+        touch-action: manipulation; /* remove the delay on touch devices */
+
     }
   </style>

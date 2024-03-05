@@ -17,6 +17,7 @@
   "dependencies": {
     "emoji-datasource": "^15.1.2",
     "emoji-mart": "^5.5.2",
-    "emoji-unicode": "^2.0.1"
+    "emoji-unicode": "^2.0.1",
+    "terser": "^5.28.1"
   }
 }

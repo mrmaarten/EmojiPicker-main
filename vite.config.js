@@ -5,4 +5,8 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 export default defineConfig(({ mode }) => ({
   plugins: [svelte()],
   base: mode === 'production' ? '/emoji/' : '/', // Set the base URL conditionally
+  build: {
+    cssCodeSplit: false,
+    minify: 'terser',
+  }
 }))

@@ -69,20 +69,16 @@
     height: 100vh;
   }
 
-  .display-area {
-    /* Add styles for DisplayArea here */
-    /* position: fixed; */
-      /* top: 1rem; */
-      /* width: 90%; 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 auto;  */
+  header {
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-
-  .emoji-picker {
-    /* Add styles for EmojiPicker here */
-    /* width: 80vw;
-    margin: 0 auto; */
+  section {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>

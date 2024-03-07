@@ -1,6 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import 'emoji-picker-element';
+    // import Picker from 'emoji-picker-element/picker';
     import { focusedEmojiIndex } from '../stores.js';
     import { onMount, tick } from 'svelte';
 
@@ -33,7 +34,7 @@
 emoji-picker {
   --num-columns: 12;
   --emoji-size: 4rem;
-  --background: black;
+  --background: white;
   width: 100%; 
   height: 80vh;
 }

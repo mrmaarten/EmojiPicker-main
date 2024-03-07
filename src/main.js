@@ -1,4 +1,5 @@
 import './app.css'
+// import './global.css'
 import App from './App.svelte'
 import { registerSW } from 'virtual:pwa-register'
 

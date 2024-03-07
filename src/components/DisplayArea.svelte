@@ -90,14 +90,14 @@ TODO
       justify-content: space-between;
       align-items: center;
       margin: 0 auto; 
-      margin-top: 0.2rem;
+      margin-top: 30px;
       margin-bottom: 1rem;
-      background: rgba(92, 92, 92, 0.8); /* Use rgba for semi-transparent background */
+      background: rgba(240, 240, 240); /* Use rgba for semi-transparent background */
         /* backdrop-filter: blur(10px);  */
         /* -webkit-backdrop-filter: blur(10px); Apply blur effect with -webkit- prefix */
 
       border-radius: 16px; /* Add rounded corners */
-      border: 4px solid rgb(255, 221, 0);
+      border: 4px solid rgb(255, 200, 0);
       padding-left: 10px;
       padding-right: 10px;
       z-index: 2;
@@ -130,7 +130,7 @@ TODO
         align-items: center;
         /* width: 8vw; */
         font-size: 6vw;
-        color: rgb(255, 221, 0);
+        color: rgb(255, 200, 0);
         background: none;
         touch-action: manipulation; /* remove the delay on touch devices */
 

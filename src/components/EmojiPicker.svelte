@@ -25,10 +25,14 @@
     pickerContainer.appendChild(picker);
     picker.addEventListener('emoji-click', handleEmojiClick);
 
-    // pickerContainer.style.height = '90vh';
+    picker.style.height = '70vh';
+    picker.style.width = '80vw';
 
     window.addEventListener('resize', () => {
-      picker.style.setProperty('--emoji-size', `${window.innerHeight * 0.9 / 12}px`);
+      // picker.style.setProperty('--emoji-size', `${window.innerHeight * 0.9 / 12}px`);
+      picker.style.height = '70vh';
+      picker.style.width = '80vw';
+
     });
   });
 

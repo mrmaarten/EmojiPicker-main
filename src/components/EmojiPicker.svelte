@@ -1,77 +1,43 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import emojiData from 'emoji-datasource';
+    import 'emoji-picker-element';
     import { focusedEmojiIndex } from '../stores.js';
     import { onMount, tick } from 'svelte';
-    
-    $: console.log(categorizedEmojis);
-
-    let categorizedEmojis = emojiData.reduce((categories, emoji) => {
-        if (!categories[emoji.category]) {
-        categories[emoji.category] = [];
-        }
-        categories[emoji.category].push(emoji);
-        return categories;
-    }, {});
-
-    // Reverse the categories
-    let reversedCategories = Object.keys(categorizedEmojis).reduceRight((obj, key) => {
-      obj[key] = categorizedEmojis[key];
-      return obj;
-    }, {});
 
     const dispatch = createEventDispatcher();
-    // const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣'];
-  
-    function handleEmojiClick(emoji) {
-      dispatch('select', emoji);
+
+    function handleEmojiClick(event) {
+      dispatch('select', event.detail.unicode);
       focusedEmojiIndex.set(null);
     }
 
     onMount(async () => {
         await tick(); // Wait for the DOM to be updated
-        const elements = document.querySelectorAll('.emoji-picker button');
-
-        elements.forEach(element => {
-            element.addEventListener('dblclick', event => {
-                event.preventDefault();
-            });
-        });
+        const picker = document.querySelector('emoji-picker');
+        picker.addEventListener('emoji-click', handleEmojiClick);
     });
-  </script>
-  
-  <div class="emoji-picker">
-    {#each Object.entries(reversedCategories) as [category, emojis]}
-      <h2>{category}</h2>
-      <div class="emoji-grid">
-        {#each emojis as emoji}
-        <button on:click={() => handleEmojiClick(String.fromCodePoint(parseInt(emoji.unified, 16)))}>{String.fromCodePoint(parseInt(emoji.unified, 16))}</button>
-        {/each}
-      </div>
-    {/each}
-  </div>
-
-  <style>
-     .emoji-picker {
-      position: absolute;
-      top: 16%; 
-      z-index: 1;
-      justify-content: center;
-      align-items: center;
-      width: 90%;
-    }
-
-    .emoji-picker button{
-      font-size: 4vw;
-      padding: 0;
-      margin: 6px;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
+</script>
+<div class="emoji-wrapper">
     
-    .emoji-grid {
-      font-size: 3vw;
-    }
+<emoji-picker></emoji-picker>
+</div>
+<style>
+.emoji-wrapper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  </style>
+emoji-picker {
+  --num-columns: 12;
+  --emoji-size: 4rem;
+  --background: black;
+  width: 100%; 
+  height: 80vh;
+}
+emoji-picker::part(search-wrapper) {
+  display: none; /* Hide the search bar */
+}
+</style>

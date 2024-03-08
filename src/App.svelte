@@ -48,24 +48,25 @@
 </script>
 
 <main>
-  <!-- <div class="display-area"> -->
     <header>
     <DisplayArea on:delete={deleteEmoji} />
   </header>
   <section>
-  <!-- </div> -->
-  <!-- <div class="emoji-picker"> -->
     <EmojiPicker on:select={handleSelect} />
-  <!-- </div> -->
 </section>
 </main>
 
 <style>
+    html, body, main, header {
+    margin: 0;
+    padding: 0;
+  }
+  
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Align content at the start */
+    justify-content: center; 
     height: 100vh;
   }
 

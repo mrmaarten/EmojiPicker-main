@@ -16,9 +16,15 @@
     await tick(); // Wait for the DOM to be updated
     const picker = new Picker();
     const shadow = picker.shadowRoot;
-    const style = document.createElement('style');
+    const  style = document.createElement('style');
     style.textContent = '.search-row { display: none; }';
     shadow.appendChild(style);
+
+    const style2 = document.createElement('style');
+    style2.textContent = '.favorites { display: none; }';
+    shadow.appendChild(style2);
+
+
     picker.style.setProperty('--num-columns', '12');
     picker.style.setProperty('--emoji-size', `${window.innerHeight * 0.9 / 12}px`);
     picker.style.setProperty('--background', 'white');

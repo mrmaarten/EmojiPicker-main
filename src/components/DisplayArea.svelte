@@ -1,12 +1,3 @@
-<!-- 
-TODO 
-- fix bug: when selecting a emoji in the selected field, the emoji can be deleted with the keyboard but not with the del <button 
-- show the last deleted emojis under neath the selected emojis, with a filter for repeating emojis
-- make a selection of emojis
-- reverse the order of the categories
-- test the app on mobile / iPad with HDMI cable
--->
-
 <script>
     // import { writable } from 'svelte/store';
     import { createEventDispatcher } from 'svelte';
@@ -90,7 +81,7 @@ TODO
       justify-content: space-between;
       align-items: center;
       margin: 0 auto; 
-      margin-top: 30px;
+      /* margin-top: 30px; */
       margin-bottom: 1rem;
       background: rgba(240, 240, 240); /* Use rgba for semi-transparent background */
         /* backdrop-filter: blur(10px);  */

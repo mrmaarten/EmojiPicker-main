@@ -41,11 +41,13 @@
   function sizeEmoji(){
     const aspektRatio = window.innerHeight / window.innerWidth;
       if (aspektRatio > 1) {
-        picker.style.setProperty('--num-columns', '10');
-        picker.style.setProperty('--emoji-size', `${window.innerWidth  * 0.4  / 12}px`);
+        // portait
+        picker.style.setProperty('--num-columns', '6');
+        picker.style.setProperty('--emoji-size', `${window.innerWidth  * 0.7  / 12}px`);
       } else {
+        // landscape
         picker.style.setProperty('--num-columns', '10');
-        picker.style.setProperty('--emoji-size', `${window.innerWidth * 0.8 / 12}px`);
+        picker.style.setProperty('--emoji-size', `${window.innerWidth * 0.7 / 12}px`);
       }
 
       // picker.style.setProperty('--emoji-size', `${window.innerHeight * 0.9 / 12}px`);

@@ -24,7 +24,6 @@
     style2.textContent = '.favorites { display: none; }';
     shadow.appendChild(style2);
 
-
     // picker.style.setProperty('--num-columns', '12');
     // picker.style.setProperty('--emoji-size', `${window.innerHeight * 0.9 / 12}px`);
     picker.style.setProperty('--background', 'white');

@@ -6,6 +6,8 @@
 
   let startY;
 
+  const maxEmoji = 9;
+
   // Prevent pull to refresh on touch devices
   function handleTouchStart(event) {
     startY = event.touches[0].clientY;
@@ -35,7 +37,7 @@
   
   function handleSelect(event) {
     // handles selecting a emoji from the grid of emojis
-    if ($selectedEmojis.length < 10) {
+    if ($selectedEmojis.length < maxEmoji) {
       //add the emoji from the grid to the selected array
       selectedEmojis.update(emojis => [...emojis, event.detail]);
     }
